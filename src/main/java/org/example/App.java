@@ -34,7 +34,7 @@ public class App extends Application {
 
         Scene scene = new Scene(LoadStagesUtil.loadFXML("views/main/main").load());
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Clothing Store App");
+        primaryStage.setTitle("Manage Your store");
         primaryStage.setMaximized(SET_MAXIMIZED_WINDOW);
         primaryStage.show();
     }
