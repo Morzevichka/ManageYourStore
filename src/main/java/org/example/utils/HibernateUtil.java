@@ -1,5 +1,6 @@
 package org.example.utils;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import org.example.entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -17,9 +18,18 @@ public final class HibernateUtil {
 
     static {
         try {
+
+            Dotenv dotenv = Dotenv.configure()
+                    .directory("src/main/assets")
+                    .filename("env")
+                    .load();
+
             // Create configuration
             Configuration configuration = new Configuration();
             configuration.configure("hibernate.cfg.xml");
+            configuration.setProperty("hibernate.connection.url", dotenv.get("DB_URL"));
+            configuration.setProperty("hibernate.connection.username", dotenv.get("DB_USERNAME"));
+            configuration.setProperty("hibernate.connection.password", dotenv.get("DB_PASSWORD"));
 
             // Create L2 Cache configuration
             CachingProvider provider = Caching.getCachingProvider();
