@@ -1,0 +1,43 @@
+module com.morzevichka {
+    requires javafx.controls;
+    requires javafx.fxml;
+    requires java.sql;
+    requires java.desktop;
+    requires io.github.cdimascio.dotenv.java;
+    requires com.oracle.database.jdbc;
+    requires jBCrypt;
+    requires jakarta.persistence;
+    requires org.hibernate.orm.core;
+    requires java.naming;
+    requires javafx.swing;
+    requires cache.api;
+    requires java.management;
+    requires jakarta.transaction;
+
+    exports org.example;
+    opens org.example to javafx.fxml;
+    exports org.example.entity;
+    opens org.example.entity to javafx.fxml, org.hibernate.orm.core;
+    exports org.example.dto;
+    opens org.example.dto to javafx.fxml;
+    exports org.example.repository;
+    opens org.example.repository to org.hibernate.orm.core;
+    exports org.example.services;
+    opens org.example.services to javafx.fxml, org.hibernate.orm.core;
+    exports org.example.controllers.auth;
+    opens org.example.controllers.auth to javafx.fxml;
+    exports org.example.controllers.account;
+    opens org.example.controllers.account to javafx.fxml;
+    exports org.example.controllers.main;
+    opens org.example.controllers.main to javafx.fxml;
+    exports org.example.controllers.center;
+    opens org.example.controllers.center to javafx.fxml;
+    exports org.example.controllers.center.categories;
+    opens org.example.controllers.center.categories to javafx.fxml;
+    exports org.example.controllers.center.products;
+    opens org.example.controllers.center.products to javafx.fxml;
+    exports org.example.controllers.center.purchase;
+    opens org.example.controllers.center.purchase to javafx.fxml;
+    exports org.example.controllers.center.report;
+    opens org.example.controllers.center.report to javafx.fxml;
+}
